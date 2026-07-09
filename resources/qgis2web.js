@@ -648,6 +648,53 @@ function onSingleClickWMS(evt) {
 map.on('singleclick', onSingleClickFeatures);
 map.on('singleclick', onSingleClickWMS);
 
+function showCoordinateCopyMessage(text) {
+  var message = document.getElementById('coordinate-copy-message');
+  if (!message) {
+    message = document.createElement('div');
+    message.id = 'coordinate-copy-message';
+    message.style.position = 'fixed';
+    message.style.left = '50%';
+    message.style.bottom = '20px';
+    message.style.transform = 'translateX(-50%)';
+    message.style.zIndex = '9999';
+    message.style.maxWidth = 'min(560px, calc(100vw - 32px))';
+    message.style.padding = '10px 14px';
+    message.style.borderRadius = '6px';
+    message.style.background = '#1f2937';
+    message.style.color = '#ffffff';
+    message.style.font = '14px/1.4 Arial, sans-serif';
+    message.style.boxShadow = '0 8px 20px rgba(0, 0, 0, 0.25)';
+    message.style.wordBreak = 'break-word';
+    document.body.appendChild(message);
+  }
+  message.textContent = text;
+  clearTimeout(message.hideTimer);
+  message.hideTimer = setTimeout(function() {
+    message.remove();
+  }, 7000);
+}
+
+map.on('singleclick', function(evt) {
+  if (!evt.originalEvent || !evt.originalEvent.shiftKey) {
+    return;
+  }
+
+  var lonLat = ol.proj.toLonLat(evt.coordinate);
+  var coordinateText = '[' + lonLat[0].toFixed(15) + ', ' + lonLat[1].toFixed(15) + ']';
+  var messageText = 'Club meeting coordinates copied: ' + coordinateText;
+
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(coordinateText).then(function() {
+      showCoordinateCopyMessage(messageText);
+    }).catch(function() {
+      showCoordinateCopyMessage('Club meeting coordinates: ' + coordinateText);
+    });
+  } else {
+    showCoordinateCopyMessage('Club meeting coordinates: ' + coordinateText);
+  }
+});
+
 //get container
 var topLeftContainerDiv = document.getElementById('top-left-container')
 var bottomLeftContainerDiv = document.getElementById('bottom-left-container')
