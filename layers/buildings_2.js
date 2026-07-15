@@ -574,7 +574,7 @@ var json_buildings_2 = {
       "type": "Feature",
       "properties": {
         "id": "11",
-        "build": "new building",
+        "build": "The Irving and Muriel Fischer Academic Center",
         "build type": "teaching building"
       },
       "geometry": {

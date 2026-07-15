@@ -201,44 +201,6 @@ var json_facilities_5 = {
     {
       "type": "Feature",
       "properties": {
-        "id": "7",
-        "name": "parking",
-        "build name": "parkinglot west",
-        "build type": "facility"
-      },
-      "geometry": {
-        "type": "MultiPolygon",
-        "coordinates": [
-          [
-            [
-              [
-                -74.01349488016689,
-                41.422230845991294
-              ],
-              [
-                -74.01329869282645,
-                41.42240523473835
-              ],
-              [
-                -74.01314882749695,
-                41.422241745287984
-              ],
-              [
-                -74.01332594106817,
-                41.422130027496905
-              ],
-              [
-                -74.01349488016689,
-                41.422230845991294
-              ]
-            ]
-          ]
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
         "id": "6",
         "name": "parkinglot",
         "build name": "parkinglot south",
