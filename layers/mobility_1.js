@@ -1309,28 +1309,6 @@ var json_mobility_1 = {
     {
       "type": "Feature",
       "properties": {
-        "id": "20",
-        "type": "sidewalk"
-      },
-      "geometry": {
-        "type": "MultiLineString",
-        "coordinates": [
-          [
-            [
-              -74.01275236949259,
-              41.424244349543876
-            ],
-            [
-              -74.01294727774606,
-              41.42394961023374
-            ]
-          ]
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
         "id": "21",
         "type": "sidewalk"
       },
@@ -1425,7 +1403,7 @@ var json_mobility_1 = {
     {
       "type": "Feature",
       "properties": {
-        "id": "100000",
+        "id": "20",
         "type": "sidewalk"
       },
       "geometry": {
