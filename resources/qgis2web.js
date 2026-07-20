@@ -695,6 +695,30 @@ map.on('singleclick', function(evt) {
   }
 });
 
+function setupClubMeetingsToggle() {
+  var toggleButton = document.getElementById('club-meetings-toggle');
+  if (!toggleButton || typeof lyr_clubmeetings_9 === 'undefined') {
+    return;
+  }
+
+  function updateToggleState() {
+    var isVisible = lyr_clubmeetings_9.getVisible();
+    toggleButton.classList.toggle('is-off', !isVisible);
+    toggleButton.setAttribute('aria-pressed', isVisible ? 'true' : 'false');
+    toggleButton.title = isVisible ? 'Hide club meeting locations' : 'Show club meeting locations';
+  }
+
+  toggleButton.addEventListener('click', function() {
+    lyr_clubmeetings_9.setVisible(!lyr_clubmeetings_9.getVisible());
+    updateToggleState();
+  });
+
+  lyr_clubmeetings_9.on('change:visible', updateToggleState);
+  updateToggleState();
+}
+
+setupClubMeetingsToggle();
+
 //get container
 var topLeftContainerDiv = document.getElementById('top-left-container')
 var bottomLeftContainerDiv = document.getElementById('bottom-left-container')

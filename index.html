@@ -100,11 +100,49 @@
             background: #f8f8f8;
             cursor: pointer;
         }
+        .club-meetings-toggle {
+            position: absolute;
+            top: 12px;
+            right: 48px;
+            z-index: 1000;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 11px;
+            border: 1px solid rgba(0,0,0,.22);
+            border-radius: 6px;
+            background: #ffffff;
+            color: #1f2937;
+            box-shadow: 0 4px 14px rgba(0,0,0,.16);
+            font: 700 13px/1.2 Arial, sans-serif;
+            cursor: pointer;
+        }
+        .club-meetings-toggle::before {
+            content: "";
+            width: 12px;
+            height: 12px;
+            background: #dc2626;
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 56%, 79% 91%, 50% 70%, 21% 91%, 32% 56%, 2% 35%, 39% 35%);
+        }
+        .club-meetings-toggle.is-off {
+            opacity: .62;
+        }
+        .club-meetings-toggle.is-off::before {
+            background: #6b7280;
+        }
+        @media (max-width: 520px) {
+            .club-meetings-toggle {
+                top: auto;
+                right: 12px;
+                bottom: 58px;
+            }
+        }
         </style>
         <title>Campus Club Meeting Map</title>
     </head>
     <body>
         <div id="map">
+            <button id="club-meetings-toggle" class="club-meetings-toggle" type="button" aria-pressed="true">Club Meetings</button>
             <div id="popup" class="ol-popup">
                 <a href="#" id="popup-closer" class="ol-popup-closer"></a>
                 <div id="popup-content"></div>
@@ -117,10 +155,10 @@
         <script src="resources/photon-geocoder-autocomplete.min.js"></script>
         <script src="resources/olms.js"></script>
         <script src="layers/mobility_1.js?v=20260715-geometry"></script><script src="layers/buildings_2.js?v=20260715-geometry"></script><script src="layers/dormbuildings_3.js"></script><script src="layers/entrances_exit_4.js"></script><script src="layers/facilities_5.js?v=20260715-geometry"></script><script src="layers/facultyhouses_6.js"></script><script src="layers/clublocationweek1_7.js"></script><script src="layers/campusarea_8.js"></script><script src="layers/clubmeetings_9.js?v=20260707-time"></script>
-        <script src="styles/mobility_1_style.js"></script><script src="styles/buildings_2_style.js"></script><script src="styles/dormbuildings_3_style.js"></script><script src="styles/entrances_exit_4_style.js"></script><script src="styles/facilities_5_style.js"></script><script src="styles/facultyhouses_6_style.js"></script><script src="styles/clublocationweek1_7_style.js"></script><script src="styles/campusarea_8_style.js"></script><script src="styles/clubmeetings_9_style.js"></script>
+        <script src="styles/mobility_1_style.js"></script><script src="styles/buildings_2_style.js"></script><script src="styles/dormbuildings_3_style.js"></script><script src="styles/entrances_exit_4_style.js"></script><script src="styles/facilities_5_style.js"></script><script src="styles/facultyhouses_6_style.js"></script><script src="styles/clublocationweek1_7_style.js"></script><script src="styles/campusarea_8_style.js"></script><script src="styles/clubmeetings_9_style.js?v=20260720-club-toggle"></script>
         <script src="./layers/layers.js?v=20260707-time" type="text/javascript"></script> 
         <script src="./resources/Autolinker.min.js"></script>
-        <script src="./resources/qgis2web.js?v=20260707-time"></script>
+        <script src="./resources/qgis2web.js?v=20260720-club-toggle"></script>
         <script src="./resources/geolocate-user.js?v=20260707-time"></script>
     </body>
 </html>
